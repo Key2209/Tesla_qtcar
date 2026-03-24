@@ -18,7 +18,8 @@
 			"set_property",
 			"_populate_Quick_target_properties",
 			"find_package",
-			"_populate_Qml_target_properties"
+			"_populate_Qml_target_properties",
+			"target_include_directories"
 		],
 		"files" : 
 		[
@@ -36,13 +37,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 36,
+				"line" : 37,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 43,
+				"line" : 44,
 				"parent" : 0
 			},
 			{
@@ -108,6 +109,12 @@
 				"file" : 3,
 				"line" : 44,
 				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 52,
+				"parent" : 0
 			}
 		]
 	},
@@ -162,6 +169,10 @@
 				{
 					"backtrace" : 0,
 					"path" : "D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/include"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "D:/QtProject/my_car/new_pj/CPP"
 				},
 				{
 					"backtrace" : 2,

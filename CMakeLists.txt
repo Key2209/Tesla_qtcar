@@ -19,6 +19,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Gui Concurrent
 set(PROJECT_SOURCES
     main.cpp
     qml.qrc
+
 )
 
 # 兼容 Qt5 和 Qt6 创建可执行文件
@@ -45,6 +46,11 @@ target_link_libraries(Tesla_Dashboard_UI PRIVATE
     Qt${QT_VERSION_MAJOR}::Quick
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Concurrent
+)
+
+# 包含 CPP 目录路径
+target_include_directories(Tesla_Dashboard_UI PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/CPP
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
