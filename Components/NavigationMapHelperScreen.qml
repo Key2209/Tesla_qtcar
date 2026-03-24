@@ -972,4 +972,218 @@ Rectangle {
             }
         }
     }
+
+
+
+
+    // ==========================================
+    // 4. 电话 App (iOS 风格拨号盘与最近通话)
+    // activeWidget === 4
+    // ==========================================
+    Rectangle {
+        id: phoneWidgetContainer
+        color: cardBackgroundColor; radius: 16; border.color: cardBorderColor; border.width: 1; clip: true
+        
+        // 占据整个右侧安全区
+        anchors.left: parent.left; anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: parent.bottom
+        anchors.topMargin: topSafeMargin + paddingVal; anchors.bottomMargin: bottomSafeMargin + paddingVal
+        anchors.leftMargin: paddingVal; anchors.rightMargin: paddingVal
+
+        opacity: activeWidget === 4 ? 1 : 0
+        visible: opacity > 0
+        z: activeWidget === 4 ? 99 : 1
+        Behavior on opacity { NumberAnimation { duration: 300; easing.type: Easing.InOutQuad } }
+        
+        // 拦截点击，防止穿透到底层
+        MouseArea { anchors.fill: parent }
+
+        RowLayout {
+            anchors.fill: parent; anchors.margins: 40; spacing: 60
+
+            // 左侧：最近通话列表
+            ColumnLayout {
+                Layout.fillHeight: true; Layout.preferredWidth: parent.width * 0.4; spacing: 20
+                Text { text: "Recents"; color: "white"; font.pixelSize: 32; font.weight: Font.Bold }
+                
+                ListView {
+                    Layout.fillWidth: true; Layout.fillHeight: true; clip: true; spacing: 15
+                    model: ListModel {
+                        ListElement { name: "Elon Musk"; type: "Mobile"; time: "10:42 AM"; missed: false }
+                        ListElement { name: "Tim Cook"; type: "Work"; time: "Yesterday"; missed: true }
+                        ListElement { name: "Home"; type: "Home"; time: "Tuesday"; missed: false }
+                    }
+                    delegate: RowLayout {
+                        width: parent.width; height: 50
+                        ColumnLayout {
+                            Layout.fillWidth: true; spacing: 4
+                            Text { text: name; color: missed ? "#FF3B30" : "white"; font.pixelSize: 20; font.weight: Font.Medium }
+                            Text { text: type; color: "#8E8E93"; font.pixelSize: 14 }
+                        }
+                        Text { text: time; color: "#8E8E93"; font.pixelSize: 16 }
+                        Text { text: "ⓘ"; color: "#0A84FF"; font.pixelSize: 24; Layout.leftMargin: 15 } // 详情图标
+                    }
+                }
+            }
+
+            // 右侧：iOS 风格拨号盘
+            ColumnLayout {
+                Layout.fillHeight: true; Layout.fillWidth: true; spacing: 30
+                
+                Text { 
+                    text: "1 (800) 555-0199" // 输入的号码占位
+                    color: "white"; font.pixelSize: 40; font.weight: Font.Light
+                    Layout.alignment: Qt.AlignHCenter; Layout.topMargin: 20
+                }
+
+                GridLayout {
+                    columns: 3; columnSpacing: 30; rowSpacing: 20; Layout.alignment: Qt.AlignHCenter
+                    Repeater {
+                        model: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"]
+                        delegate: Rectangle {
+                            width: 80; height: 80; radius: 40; color: numMouse.pressed ? "#555555" : "#2C2C2E"
+                            Behavior on color { ColorAnimation { duration: 100 } }
+                            Text { text: modelData; color: "white"; font.pixelSize: 36; font.weight: Font.Light; anchors.centerIn: parent }
+                            MouseArea { id: numMouse; anchors.fill: parent }
+                        }
+                    }
+                }
+
+                // 拨号键
+                Rectangle {
+                    width: 80; height: 80; radius: 40; color: callMouse.pressed ? "#248A3D" : "#34C759" // iOS 绿色
+                    Layout.alignment: Qt.AlignHCenter; Layout.topMargin: 10
+                    Behavior on color { ColorAnimation { duration: 100 } }
+                    Image { source: "qrc:/icons/app_icons/phone.svg"; width: 40; height: 40; anchors.centerIn: parent; fillMode: Image.PreserveAspectFit }
+                    MouseArea { id: callMouse; anchors.fill: parent }
+                }
+            }
+        }
+        
+        // 右上角关闭按钮 (通用)
+        Rectangle {
+            width: 36; height: 36; radius: 18; color: "#3A3A3C"; anchors.top: parent.top; anchors.right: parent.right; anchors.margins: 20
+            Text { text: "✕"; color: "#8E8E93"; font.pixelSize: 16; anchors.centerIn: parent }
+            MouseArea { anchors.fill: parent; onClicked: activeWidget = 0 }
+        }
+    }
+
+    // ==========================================
+    // 6. 蓝牙设置 App (iOS 设置列表风格)
+    // activeWidget === 6
+    // ==========================================
+    Rectangle {
+        id: bluetoothWidgetContainer
+        color: cardBackgroundColor; radius: 16; border.color: cardBorderColor; border.width: 1; clip: true
+        anchors.left: parent.left; anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: parent.bottom
+        anchors.topMargin: topSafeMargin + paddingVal; anchors.bottomMargin: bottomSafeMargin + paddingVal
+        anchors.leftMargin: paddingVal; anchors.rightMargin: paddingVal
+        opacity: activeWidget === 6 ? 1 : 0; visible: opacity > 0; z: activeWidget === 6 ? 99 : 1
+        Behavior on opacity { NumberAnimation { duration: 300; easing.type: Easing.InOutQuad } }
+        MouseArea { anchors.fill: parent }
+
+        ColumnLayout {
+            anchors.fill: parent; anchors.margins: 40; spacing: 30
+            
+            Text { text: "Bluetooth"; color: "white"; font.pixelSize: 36; font.weight: Font.Bold; Layout.bottomMargin: 20 }
+
+            // 大开关区域
+            Rectangle {
+                Layout.fillWidth: true; height: 80; radius: 16; color: "#2C2C2E"
+                RowLayout {
+                    anchors.fill: parent; anchors.margins: 20
+                    Text { text: "Bluetooth"; color: "white"; font.pixelSize: 22; Layout.fillWidth: true }
+                    // 模拟 iOS 开关
+                    Rectangle {
+                        width: 60; height: 32; radius: 16; color: "#34C759"
+                        Rectangle { width: 28; height: 28; radius: 14; color: "white"; anchors.verticalCenter: parent.verticalCenter; anchors.right: parent.right; anchors.rightMargin: 2 }
+                    }
+                }
+            }
+
+            Text { text: "MY DEVICES"; color: "#8E8E93"; font.pixelSize: 14; Layout.topMargin: 20; Layout.leftMargin: 20 }
+
+            // 设备列表
+            Rectangle {
+                Layout.fillWidth: true; Layout.fillHeight: true; radius: 16; color: "#2C2C2E"; clip: true
+                ListView {
+                    anchors.fill: parent; clip: true; boundsBehavior: Flickable.StopAtBounds
+                    model: ListModel {
+                        ListElement { devName: "iPhone 14 Pro"; status: "Connected"; isConnected: true }
+                        ListElement { devName: "AirPods Max"; status: "Not Connected"; isConnected: false }
+                        ListElement { devName: "Tesla Key Fob"; status: "Not Connected"; isConnected: false }
+                    }
+                    delegate: Item {
+                        width: parent.width; height: 70
+                        RowLayout {
+                            anchors.fill: parent; anchors.leftMargin: 20; anchors.rightMargin: 20
+                            Text { text: devName; color: "white"; font.pixelSize: 20; Layout.fillWidth: true }
+                            Text { text: status; color: isConnected ? "#0A84FF" : "#8E8E93"; font.pixelSize: 18 }
+                            Text { text: "ⓘ"; color: "#0A84FF"; font.pixelSize: 24; Layout.leftMargin: 10 }
+                        }
+                        // 分割线
+                        Rectangle { width: parent.width - 40; height: 1; color: "#3A3A3C"; anchors.bottom: parent.bottom; anchors.right: parent.right }
+                    }
+                }
+            }
+        }
+        
+        Rectangle { width: 36; height: 36; radius: 18; color: "#3A3A3C"; anchors.top: parent.top; anchors.right: parent.right; anchors.margins: 20; Text { text: "✕"; color: "#8E8E93"; font.pixelSize: 16; anchors.centerIn: parent } MouseArea { anchors.fill: parent; onClicked: activeWidget = 0 } }
+    }
+
+    // ==========================================
+    // 7. & 8. 行车记录仪 / 视频应用 (媒体画廊风格)
+    // activeWidget === 7 || activeWidget === 8
+    // ==========================================
+    Rectangle {
+        id: videoWidgetContainer
+        color: cardBackgroundColor; radius: 16; border.color: cardBorderColor; border.width: 1; clip: true
+        anchors.left: parent.left; anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: parent.bottom
+        anchors.topMargin: topSafeMargin + paddingVal; anchors.bottomMargin: bottomSafeMargin + paddingVal
+        anchors.leftMargin: paddingVal; anchors.rightMargin: paddingVal
+        opacity: (activeWidget === 7 || activeWidget === 8) ? 1 : 0; visible: opacity > 0; z: 99
+        Behavior on opacity { NumberAnimation { duration: 300; easing.type: Easing.InOutQuad } }
+        MouseArea { anchors.fill: parent }
+
+        ColumnLayout {
+            anchors.fill: parent; anchors.margins: 20; spacing: 20
+            
+            Text { 
+                text: activeWidget === 7 ? "Dashcam Viewer" : "Theater" 
+                color: "white"; font.pixelSize: 24; font.weight: Font.Bold; Layout.leftMargin: 10 
+            }
+
+            // 占位视频播放器
+            Rectangle {
+                Layout.fillWidth: true; Layout.fillHeight: true; radius: 12; color: "black"; clip: true
+                // 这里以后换成 Video { ... } 播放器组件
+                Image {
+                    source: activeWidget === 7 ? "qrc:/icons/dashcam_placeholder.jpg" : "qrc:/icons/movie_placeholder.jpg"
+                    anchors.fill: parent; fillMode: Image.PreserveAspectCrop; opacity: 0.6
+                }
+                
+                Rectangle {
+                    width: 80; height: 80; radius: 40; color: "#80000000"; border.color: "#FFFFFF"; border.width: 2; anchors.centerIn: parent
+                    Text { text: "▶"; color: "white"; font.pixelSize: 36; anchors.centerIn: parent; anchors.horizontalCenterOffset: 4 }
+                }
+
+                // 底部视频进度条
+                Rectangle {
+                    anchors.bottom: parent.bottom; anchors.left: parent.left; anchors.right: parent.right
+                    height: 50; color: "#80000000"
+                    RowLayout {
+                        anchors.fill: parent; anchors.margins: 15; spacing: 15
+                        Text { text: "0:00"; color: "white"; font.pixelSize: 14 }
+                        Slider {
+                            Layout.fillWidth: true; value: 0.3
+                            background: Rectangle { y: parent.height/2-2; width: parent.width; height: 4; radius: 2; color: "#555"; Rectangle { width: parent.parent.visualPosition * parent.width; height: parent.height; color: "#FF3B30"; radius: 2 } }
+                            handle: Rectangle { x: parent.leftPadding + parent.visualPosition * (parent.availableWidth - width); y: parent.topPadding + parent.availableHeight / 2 - height / 2; width: 12; height: 12; radius: 6; color: "white" }
+                        }
+                        Text { text: "-12:45"; color: "white"; font.pixelSize: 14 }
+                    }
+                }
+            }
+        }
+        
+        Rectangle { width: 36; height: 36; radius: 18; color: "#3A3A3C"; anchors.top: parent.top; anchors.right: parent.right; anchors.margins: 20; Text { text: "✕"; color: "#8E8E93"; font.pixelSize: 16; anchors.centerIn: parent } MouseArea { anchors.fill: parent; onClicked: activeWidget = 0 } }
+    }
 }

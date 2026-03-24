@@ -227,6 +227,7 @@ ApplicationWindow {
         }
 
         NavigationMapHelperScreen {
+            id: rightPanelWidget
             Layout.fillWidth: true
             Layout.fillHeight: true
             runMenuAnimation: true
@@ -250,6 +251,28 @@ ApplicationWindow {
         z: 99
         id: footerLayout
         onOpenLauncher: launcher.open()
+
+        // 👉 2. 接收我们在 Footer.qml 里写的信号
+        onToggleApp: {
+            // 参数 appId: 1=地图, 2=音乐, 3=天气
+            
+            // 如果当前在主界面（只有车在中间），就先进入带有右侧面板的界面
+            if (!Style.mapAreaVisible) {
+                Style.mapAreaVisible = true;
+                rightPanelWidget.activeWidget = appId;
+            } 
+            // 如果已经在带有右侧面板的界面了
+            else {
+                // 如果点的是当前正在全屏的应用，就缩回去变为分屏(0)
+                if (rightPanelWidget.activeWidget === appId) {
+                    rightPanelWidget.activeWidget = 0;
+                } 
+                // 否则就全屏打开对应的应用
+                else {
+                    rightPanelWidget.activeWidget = appId;
+                }
+            }
+        }
     }
 
     TopLeftButtonIconColumn {
