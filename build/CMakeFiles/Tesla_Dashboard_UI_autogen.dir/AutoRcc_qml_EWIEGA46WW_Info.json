@@ -129,7 +129,11 @@
 		"D:/QtProject/my_car/new_pj/icons/app_icons/seat.svg",
 		"D:/QtProject/my_car/new_pj/icons/app_icons/recording.svg",
 		"D:/QtProject/my_car/new_pj/icons/stepper_icons/left-arrow.svg",
-		"D:/QtProject/my_car/new_pj/icons/stepper_icons/right-arrow.svg"
+		"D:/QtProject/my_car/new_pj/icons/stepper_icons/right-arrow.svg",
+		"D:/QtProject/my_car/new_pj/Apps/MusicApp.qml",
+		"D:/QtProject/my_car/new_pj/Apps/BluetoothApp.qml",
+		"D:/QtProject/my_car/new_pj/Apps/DashcamApp.qml",
+		"D:/QtProject/my_car/new_pj/Apps/PhoneApp.qml"
 	],
 	"LOCK_FILE" : "D:/QtProject/my_car/new_pj/build/CMakeFiles/Tesla_Dashboard_UI_autogen.dir/AutoRcc_qml_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

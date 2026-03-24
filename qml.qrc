@@ -121,5 +121,9 @@
         <file>icons/dark/sidebar-light.png</file>
         <file>icons/light/tsl_r.png</file>
         <file>icons/light/tsl_r1.png</file>
+        <file>Apps/MusicApp.qml</file>
+        <file>Apps/PhoneApp.qml</file>
+        <file>Apps/BluetoothApp.qml</file>
+        <file>Apps/DashcamApp.qml</file>
     </qresource>
 </RCC>
