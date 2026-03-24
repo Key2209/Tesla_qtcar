@@ -1,0 +1,5 @@
+D:/QtProject/my_car/new_pj/build/CMakeFiles/Tesla_Dashboard_UI.dir
+D:/QtProject/my_car/new_pj/build/CMakeFiles/edit_cache.dir
+D:/QtProject/my_car/new_pj/build/CMakeFiles/rebuild_cache.dir
+D:/QtProject/my_car/new_pj/build/CMakeFiles/Tesla_Dashboard_UI_autogen_timestamp_deps.dir
+D:/QtProject/my_car/new_pj/build/CMakeFiles/Tesla_Dashboard_UI_autogen.dir
