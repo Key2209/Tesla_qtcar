@@ -1,11 +1,19 @@
 # ninja log v5
-3	88	7960332846470988	Tesla_Dashboard_UI_autogen/timestamp	64d0deeb8c717c8f
-3	88	7960332846470988	Tesla_Dashboard_UI_autogen/mocs_compilation.cpp	64d0deeb8c717c8f
-3	88	7960332846470988	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/timestamp	64d0deeb8c717c8f
-3	88	7960332846470988	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp	64d0deeb8c717c8f
-89	295	7960332848659082	Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp	e958de416f1a5a35
-89	295	7960332848659082	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp	e958de416f1a5a35
+5	62	7960354053097998	Tesla_Dashboard_UI_autogen/timestamp	64d0deeb8c717c8f
+63	412	7960354096883860	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp	e958de416f1a5a35
+5	62	7960354053097998	Tesla_Dashboard_UI_autogen/mocs_compilation.cpp	64d0deeb8c717c8f
+5	62	7960354053097998	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/timestamp	64d0deeb8c717c8f
+5	62	7960354053097998	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp	64d0deeb8c717c8f
+63	412	7960354096883860	Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp	e958de416f1a5a35
 296	345	7960332849207280	CMakeFiles/Tesla_Dashboard_UI.dir/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp.obj	3fa7fbae5abea208
 297	939	7960332854950441	CMakeFiles/Tesla_Dashboard_UI.dir/main.cpp.obj	46346edba52005d4
-297	1818	7960332863832604	CMakeFiles/Tesla_Dashboard_UI.dir/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp.obj	bc154678e6f5819b
-1818	2062	7960332866101576	Tesla_Dashboard_UI.exe	5e2a4705fdef8d8
+412	3315	7960354125782075	CMakeFiles/Tesla_Dashboard_UI.dir/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp.obj	bc154678e6f5819b
+5	134	7960354160108744	Tesla_Dashboard_UI.exe	5e2a4705fdef8d8
+5	66	7960356650503377	Tesla_Dashboard_UI_autogen/timestamp	64d0deeb8c717c8f
+5	66	7960356650503377	Tesla_Dashboard_UI_autogen/mocs_compilation.cpp	64d0deeb8c717c8f
+5	66	7960356650503377	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/timestamp	64d0deeb8c717c8f
+5	66	7960356650503377	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp	64d0deeb8c717c8f
+67	433	7960356684234024	Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp	e958de416f1a5a35
+67	433	7960356684234024	D:/QtProject/my_car/new_pj/build/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp	e958de416f1a5a35
+433	3344	7960356713232849	CMakeFiles/Tesla_Dashboard_UI.dir/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp.obj	bc154678e6f5819b
+3345	3472	7960356714304819	Tesla_Dashboard_UI.exe	5e2a4705fdef8d8

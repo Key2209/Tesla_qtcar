@@ -119,5 +119,7 @@
         <file>animIcons/icons8-car.gif</file>
         <file>animIcons/icons8-destination.gif</file>
         <file>icons/dark/sidebar-light.png</file>
+        <file>icons/light/tsl_r.png</file>
+        <file>icons/light/tsl_r1.png</file>
     </qresource>
 </RCC>
