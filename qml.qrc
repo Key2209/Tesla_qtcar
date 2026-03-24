@@ -104,8 +104,8 @@
         <file>icons/car_action_icons/Power.svg</file>
         <file>Components/LaunchPadControl.qml</file>
         <file>Components/LauncherButton.qml</file>
-        <file>NavigationMapScreen.qml</file>
-        <file>NavigationMapHelperScreen.qml</file>
+        <file>Components/NavigationMapScreen.qml</file>
+        <file>Components/NavigationMapHelperScreen.qml</file>
         <file>LayoutManager.js</file>
         <file>Map/CarMarker.png</file>
         <file>Map/LocationMarker.png</file>
