@@ -7,23 +7,23 @@ RowLayout {
     spacing: 48
     property int temp: 72
     property bool airbagOn: false
-    Text {
-        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-        text: "12:00pm"
-        font.family: "Inter"
-        font.pixelSize: 18
-        font.bold: Font.DemiBold
-        color: Style.isDark ? Style.white : Style.black20
-    }
+    // Text {
+    //     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+    //     text: "12:00pm"
+    //     font.family: "Inter"
+    //     font.pixelSize: 18
+    //     font.bold: Font.DemiBold
+    //     color: Style.isDark ? Style.white : Style.black20
+    // }
 
-    Text {
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        text: "%0ºF".arg(temp)
-        font.family: "Inter"
-        font.pixelSize: 18
-        font.bold: Font.DemiBold
-        color: Style.isDark ? Style.white : Style.black20
-    }
+    // Text {
+    //     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+    //     text: "%0ºF".arg(temp)
+    //     font.family: "Inter"
+    //     font.pixelSize: 18
+    //     font.bold: Font.DemiBold
+    //     color: Style.isDark ? Style.white : Style.black20
+    // }
 
     Control {
         Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
