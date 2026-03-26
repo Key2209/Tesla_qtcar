@@ -5,15 +5,13 @@ import Style 1.0
 import QtGraphicalEffects 1.15
 import "Components"
 import "qrc:/LayoutManager.js" as Responsive
+import QtQuick.Window 2.2
 
 ApplicationWindow {
     id: root
-    width: 1920
-    height: 1200
-    maximumHeight: height
-    minimumHeight: height
-    maximumWidth: width
-    minimumWidth: width
+    width: Screen.width
+    height: Screen.height
+    visibility: Window.FullScreen // 若想以全屏启动，可以取消这行注释
     visible: true
     title: qsTr("Tesla Model 3")
     onWidthChanged: {

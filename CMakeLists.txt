@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
-
+if(NOT CMAKE_CROSSCOMPILING)
+    set(CMAKE_PREFIX_PATH "/opt/Qt/5.15.2/gcc_64")
+endif()
 project(Tesla_Dashboard_UI VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -18,8 +20,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Gui Concurrent
 # 添加资源和源码文件
 set(PROJECT_SOURCES
     main.cpp
+    Controllers/MusicController.cpp
+    Controllers/PhoneController.cpp
     qml.qrc
-
 )
 
 # 兼容 Qt5 和 Qt6 创建可执行文件
