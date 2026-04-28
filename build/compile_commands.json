@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/alientek/桌面/new_pj/build",
+  "command": "/usr/bin/c++  -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_QUICK_LIB -I/home/alientek/桌面/new_pj/build -I/home/alientek/桌面/new_pj -I/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/include -I/home/alientek/桌面/new_pj/CPP -isystem /opt/Qt/5.15.2/gcc_64/include -isystem /opt/Qt/5.15.2/gcc_64/include/QtCore -isystem /opt/Qt/5.15.2/gcc_64/./mkspecs/linux-g++ -isystem /opt/Qt/5.15.2/gcc_64/include/QtQuick -isystem /opt/Qt/5.15.2/gcc_64/include/QtQmlModels -isystem /opt/Qt/5.15.2/gcc_64/include/QtQml -isystem /opt/Qt/5.15.2/gcc_64/include/QtNetwork -isystem /opt/Qt/5.15.2/gcc_64/include/QtGui -isystem /opt/Qt/5.15.2/gcc_64/include/QtConcurrent  -g   -fPIC -std=gnu++17 -o CMakeFiles/Tesla_Dashboard_UI.dir/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp.o -c /home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp",
+  "file": "/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp"
+},
+{
+  "directory": "/home/alientek/桌面/new_pj/build",
+  "command": "/usr/bin/c++  -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_QUICK_LIB -I/home/alientek/桌面/new_pj/build -I/home/alientek/桌面/new_pj -I/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/include -I/home/alientek/桌面/new_pj/CPP -isystem /opt/Qt/5.15.2/gcc_64/include -isystem /opt/Qt/5.15.2/gcc_64/include/QtCore -isystem /opt/Qt/5.15.2/gcc_64/./mkspecs/linux-g++ -isystem /opt/Qt/5.15.2/gcc_64/include/QtQuick -isystem /opt/Qt/5.15.2/gcc_64/include/QtQmlModels -isystem /opt/Qt/5.15.2/gcc_64/include/QtQml -isystem /opt/Qt/5.15.2/gcc_64/include/QtNetwork -isystem /opt/Qt/5.15.2/gcc_64/include/QtGui -isystem /opt/Qt/5.15.2/gcc_64/include/QtConcurrent  -g   -fPIC -std=gnu++17 -o CMakeFiles/Tesla_Dashboard_UI.dir/main.cpp.o -c /home/alientek/桌面/new_pj/main.cpp",
+  "file": "/home/alientek/桌面/new_pj/main.cpp"
+},
+{
+  "directory": "/home/alientek/桌面/new_pj/build",
+  "command": "/usr/bin/c++  -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_QUICK_LIB -I/home/alientek/桌面/new_pj/build -I/home/alientek/桌面/new_pj -I/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/include -I/home/alientek/桌面/new_pj/CPP -isystem /opt/Qt/5.15.2/gcc_64/include -isystem /opt/Qt/5.15.2/gcc_64/include/QtCore -isystem /opt/Qt/5.15.2/gcc_64/./mkspecs/linux-g++ -isystem /opt/Qt/5.15.2/gcc_64/include/QtQuick -isystem /opt/Qt/5.15.2/gcc_64/include/QtQmlModels -isystem /opt/Qt/5.15.2/gcc_64/include/QtQml -isystem /opt/Qt/5.15.2/gcc_64/include/QtNetwork -isystem /opt/Qt/5.15.2/gcc_64/include/QtGui -isystem /opt/Qt/5.15.2/gcc_64/include/QtConcurrent  -g   -fPIC -std=gnu++17 -o CMakeFiles/Tesla_Dashboard_UI.dir/Controllers/MusicController.cpp.o -c /home/alientek/桌面/new_pj/Controllers/MusicController.cpp",
+  "file": "/home/alientek/桌面/new_pj/Controllers/MusicController.cpp"
+},
+{
+  "directory": "/home/alientek/桌面/new_pj/build",
+  "command": "/usr/bin/c++  -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_QUICK_LIB -I/home/alientek/桌面/new_pj/build -I/home/alientek/桌面/new_pj -I/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/include -I/home/alientek/桌面/new_pj/CPP -isystem /opt/Qt/5.15.2/gcc_64/include -isystem /opt/Qt/5.15.2/gcc_64/include/QtCore -isystem /opt/Qt/5.15.2/gcc_64/./mkspecs/linux-g++ -isystem /opt/Qt/5.15.2/gcc_64/include/QtQuick -isystem /opt/Qt/5.15.2/gcc_64/include/QtQmlModels -isystem /opt/Qt/5.15.2/gcc_64/include/QtQml -isystem /opt/Qt/5.15.2/gcc_64/include/QtNetwork -isystem /opt/Qt/5.15.2/gcc_64/include/QtGui -isystem /opt/Qt/5.15.2/gcc_64/include/QtConcurrent  -g   -fPIC -std=gnu++17 -o CMakeFiles/Tesla_Dashboard_UI.dir/Controllers/PhoneController.cpp.o -c /home/alientek/桌面/new_pj/Controllers/PhoneController.cpp",
+  "file": "/home/alientek/桌面/new_pj/Controllers/PhoneController.cpp"
+},
+{
+  "directory": "/home/alientek/桌面/new_pj/build",
+  "command": "/usr/bin/c++  -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_QUICK_LIB -I/home/alientek/桌面/new_pj/build -I/home/alientek/桌面/new_pj -I/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/include -I/home/alientek/桌面/new_pj/CPP -isystem /opt/Qt/5.15.2/gcc_64/include -isystem /opt/Qt/5.15.2/gcc_64/include/QtCore -isystem /opt/Qt/5.15.2/gcc_64/./mkspecs/linux-g++ -isystem /opt/Qt/5.15.2/gcc_64/include/QtQuick -isystem /opt/Qt/5.15.2/gcc_64/include/QtQmlModels -isystem /opt/Qt/5.15.2/gcc_64/include/QtQml -isystem /opt/Qt/5.15.2/gcc_64/include/QtNetwork -isystem /opt/Qt/5.15.2/gcc_64/include/QtGui -isystem /opt/Qt/5.15.2/gcc_64/include/QtConcurrent  -g   -fPIC -std=gnu++17 -o CMakeFiles/Tesla_Dashboard_UI.dir/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp.o -c /home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp",
+  "file": "/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp"
+}
+]
