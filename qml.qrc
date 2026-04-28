@@ -122,8 +122,27 @@
         <file>icons/light/tsl_r.png</file>
         <file>icons/light/tsl_r1.png</file>
         <file>Apps/MusicApp.qml</file>
+        <file>Apps/WeatherApp.qml</file>
         <file>Apps/PhoneApp.qml</file>
         <file>Apps/BluetoothApp.qml</file>
         <file>Apps/DashcamApp.qml</file>
+        <file>icons/music_icons/like1.png</file>
+        <file>icons/music_icons/likelike.png</file>
+        <file>icons/music_icons/listen.png</file>
+        
+        
+        <file>icons/music_icons/playList.png</file>
+        <file>icons/music_icons/playmodel10.png</file>
+        <file>icons/music_icons/playmodel20.png</file>
+        <file>icons/music_icons/playmodel30.png</file>
+        
+        <file>icons/music_icons/setting.png</file>
+        <file>icons/music_icons/Shut_down.png</file>
+        <file>icons/music_icons/volume.png</file>
+        
+        <file>icons/music_icons/btn_pausing.png</file>
+        <file>icons/music_icons/btn_playing.png</file>
+        <file>icons/music_icons/btn_playNext_100.png</file>
+        <file>icons/music_icons/btn_playPrev_100.png</file>
     </qresource>
 </RCC>

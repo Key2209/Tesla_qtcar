@@ -1,4 +1,0 @@
-/home/alientek/桌面/new_pj/build_arm/CMakeFiles/rebuild_cache.dir
-/home/alientek/桌面/new_pj/build_arm/CMakeFiles/edit_cache.dir
-/home/alientek/桌面/new_pj/build_arm/CMakeFiles/Tesla_Dashboard_UI.dir
-/home/alientek/桌面/new_pj/build_arm/CMakeFiles/Tesla_Dashboard_UI_autogen.dir
