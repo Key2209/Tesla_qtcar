@@ -6,27 +6,95 @@
 
 #IncludeRegexTransform: 
 
-/home/alientek/桌面/new_pj/Controllers/MusicController.cpp
-QDebug
+../CPP/MusicController.h
+QObject
+-
+QString
+-
+QProcess
+-
+QRegularExpression
 -
 
-/home/alientek/桌面/new_pj/Controllers/PhoneController.cpp
+/home/alientek/桌面/new_pj/CPP/MusicController.h
+QObject
+-
+QString
+-
+QProcess
+-
+QRegularExpression
+-
+
+/home/alientek/桌面/new_pj/Controllers/MusicController.cpp
+../CPP/MusicController.h
+/home/alientek/桌面/new_pj/CPP/MusicController.h
 QDebug
+-
+QTimer
+-
+QCoreApplication
+-
+QFile
 -
 
 /home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/EWIEGA46WW/qrc_qml.cpp
 
+/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/XNIEHBP62S/moc_MusicController.cpp
+memory
+-
+CPP/MusicController.h
+/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/XNIEHBP62S/CPP/MusicController.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
 /home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp
+XNIEHBP62S/moc_MusicController.cpp
+/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/XNIEHBP62S/moc_MusicController.cpp
 
 /home/alientek/桌面/new_pj/main.cpp
 QGuiApplication
 -
 QQmlApplicationEngine
 -
+QQmlContext
+-
+CPP/MusicController.h
+/home/alientek/桌面/new_pj/CPP/MusicController.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QCoreApplication
+qcoreapplication.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qcoreapplication.h
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/QDebug
 qdebug.h
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qdebug.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QFile
+qfile.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qfile.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QObject
+qobject.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qobject.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QProcess
+qprocess.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qprocess.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QRegularExpression
+qregularexpression.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QString
+qstring.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qstring.h
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/QTimer
+qtimer.h
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qtimer.h
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h
 QtCore/qglobal.h
@@ -68,6 +136,12 @@ QtCore/qatomic_bootstrap.h
 QtCore/qatomic_cxx11.h
 -
 QtCore/qatomic_msvc.h
+-
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qbasictimer.h
+QtCore/qglobal.h
+-
+QtCore/qnamespace.h
 -
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h
@@ -182,6 +256,20 @@ utility
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qeventloop.h
 QtCore/qobject.h
+-
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qfile.h
+QtCore/qfiledevice.h
+-
+QtCore/qstring.h
+-
+stdio.h
+-
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qfiledevice.h
+QtCore/qiodevice.h
+-
+QtCore/qstring.h
 -
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qflags.h
@@ -458,6 +546,16 @@ QtCore/qsharedpointer.h
 QtCore/qtypeinfo.h
 -
 
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qprocess.h
+QtCore/qiodevice.h
+-
+QtCore/qstringlist.h
+-
+QtCore/qshareddata.h
+-
+functional
+-
+
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h
 QtCore/qglobal.h
 -
@@ -470,6 +568,18 @@ QtCore/qatomic.h
 QtCore/qglobal.h
 -
 QtCore/qstring.h
+-
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h
+QtCore/qglobal.h
+-
+QtCore/qstring.h
+-
+QtCore/qstringview.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qvariant.h
 -
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qscopedpointer.h
@@ -630,6 +740,16 @@ QtCore/qlocale.h
 QtCore/qscopedpointer.h
 -
 stdio.h
+-
+
+/opt/Qt/5.15.2/gcc_64/include/QtCore/qtimer.h
+QtCore/qglobal.h
+-
+QtCore/qbasictimer.h
+-
+QtCore/qobject.h
+-
+chrono
 -
 
 /opt/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h
@@ -804,6 +924,10 @@ QtNetwork/qtnetwork-config.h
 qqmlapplicationengine.h
 /opt/Qt/5.15.2/gcc_64/include/QtQml/qqmlapplicationengine.h
 
+/opt/Qt/5.15.2/gcc_64/include/QtQml/QQmlContext
+qqmlcontext.h
+/opt/Qt/5.15.2/gcc_64/include/QtQml/qqmlcontext.h
+
 /opt/Qt/5.15.2/gcc_64/include/QtQml/qjsengine.h
 QtCore/qmetatype.h
 -
@@ -844,6 +968,22 @@ QtCore/qurl.h
 QtCore/qobject.h
 -
 QtCore/qlist.h
+-
+
+/opt/Qt/5.15.2/gcc_64/include/QtQml/qqmlcontext.h
+QtCore/qurl.h
+-
+QtCore/qobject.h
+-
+QtCore/qlist.h
+-
+QtCore/qpair.h
+-
+QtQml/qjsvalue.h
+-
+QtCore/qmetatype.h
+-
+QtCore/qvariant.h
 -
 
 /opt/Qt/5.15.2/gcc_64/include/QtQml/qqmldebug.h

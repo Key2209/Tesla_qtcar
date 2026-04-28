@@ -5,7 +5,14 @@
 	"CMAKE_CURRENT_SOURCE_DIR" : "/home/alientek/桌面/new_pj",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
 	"CMAKE_SOURCE_DIR" : "/home/alientek/桌面/new_pj",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"/home/alientek/桌面/new_pj/CPP/MusicController.h",
+			"MU",
+			"XNIEHBP62S/moc_MusicController.cpp"
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/alientek/桌面/new_pj/build/Tesla_Dashboard_UI_autogen/mocs_compilation.cpp",

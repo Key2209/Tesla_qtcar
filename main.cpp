@@ -1,5 +1,7 @@
 #include <QGuiApplication> // 引入Qt GUI应用核心类，提供事件循环等功能
 #include <QQmlApplicationEngine> // 引入QML引擎，用于加载运行QML文件
+#include <QQmlContext>
+#include "CPP/MusicController.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +11,12 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv); // 实例化QGuiApplication，管理GUI程序的控制流和主要设置
 
     QQmlApplicationEngine engine; // 实例化QML引擎对象，它结合了QJSEngine和QQmlComponent，可以直接加载QML界面
+
+    // 实例化 Controller
+    MusicController musicController;
+    // 注入为 QML 全局上下文变量 "MusicCtrl"
+    engine.rootContext()->setContextProperty("MusicCtrl", &musicController);
+
     const QUrl url(QStringLiteral("qrc:/main.qml")); // 定义入口QML文件路径
     
     // 注册QML单例类型，使得`Style.qml`可以作为一个名为Style的全局单例对象在其他QML代码中直接被访问（例如`Style.color`）

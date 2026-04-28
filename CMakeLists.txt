@@ -13,13 +13,14 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-# 查找需要的 Qt 模块 (支持 Qt5 和 Qt6)，根据 pro 文件的 "QT += quick concurrent"
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Gui Concurrent)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Gui Concurrent)
+# 查找需要的 Qt 模块 (支持 Qt5 和 Qt6)，根据 pro 文件的 "QT += quick concurrent network"
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Gui Concurrent Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Gui Concurrent Network)
 
 # 添加资源和源码文件
 set(PROJECT_SOURCES
     main.cpp
+    CPP/MusicController.h
     Controllers/MusicController.cpp
     Controllers/PhoneController.cpp
     qml.qrc
@@ -49,6 +50,7 @@ target_link_libraries(Tesla_Dashboard_UI PRIVATE
     Qt${QT_VERSION_MAJOR}::Quick
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Concurrent
+    Qt${QT_VERSION_MAJOR}::Network
 )
 
 # 包含 CPP 目录路径

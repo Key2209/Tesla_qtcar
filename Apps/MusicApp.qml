@@ -24,22 +24,18 @@ import QtQuick.Layouts 1.3
 
 
     // ==========================================
-    // 接口：播放器核心状态 (对接 C++ QMediaPlayer)
+    // 接口：播放器核心状态 (对接 C++ QMediaPlayer 或外部 IPC 服务)
     // ==========================================
-    property bool musicIsPlaying: false
-    property int currentSongIndex: 0
-
-    // 时间状态 (单位：秒)
-    property int musicDurationSec: 200
-    property int musicElapsedSec: 0
+    property bool musicIsPlaying: MusicCtrl.isPlaying
+    property string musicTitle: MusicCtrl.title
+    property string musicArtist: MusicCtrl.artist
+    property int musicDurationSec: MusicCtrl.durationSec
+    property int musicElapsedSec: MusicCtrl.elapsedSec
+    property string musicCoverPath: MusicCtrl.coverPath
+    property string musicLyric: MusicCtrl.currentLyric
 
     // 根据秒数自动计算进度 (0.0 - 1.0)
     property real musicProgress: musicDurationSec > 0 ? (musicElapsedSec / musicDurationSec) : 0
-
-    // 当前曲目信息
-    property string musicTitle: ""
-    property string musicArtist: ""
-    property string musicCoverPath: ""
 
     // 天气接口预留
     property string weatherCity: "Cupertino"
@@ -60,42 +56,8 @@ import QtQuick.Layouts 1.3
         return m + ":" + (s < 10 ? "0" : "") + s;
     }
 
-    // 切歌函数
-    function playSong(index) {
-        if (index < 0 || index >= playlistModel.count)
-            return;
-        var songData = playlistModel.get(index);
-
-        currentSongIndex = index;
-        musicTitle = songData.songName;
-        musicArtist = songData.artistName;
-        musicCoverPath = songData.coverImg;
-        musicDurationSec = songData.durationSec;
-        musicElapsedSec = 0;
-        musicIsPlaying = true;
-    }
-
-    // 模拟后台播放的定时器 (C++ 接入后可删除)
-    Timer {
-        id: mockPlaybackTimer
-        interval: 1000
-        running: musicIsPlaying && activeWidget !== -1 // 只要在播放就跑
-        repeat: true
-        onTriggered: {
-            if (musicElapsedSec < musicDurationSec) {
-                musicElapsedSec++;
-            } else {
-                // 播完了自动下一首
-                var nextIndex = (currentSongIndex + 1) % playlistModel.count;
-                playSong(nextIndex);
-            }
-        }
-    }
-
-    // 初始化时加载第一首歌
+    // 初始化内容（删除了内部模拟）
     Component.onCompleted: {
-        playSong(0);
-        musicIsPlaying = false; // 初始不自动播放
     }
         id: musicWidgetContainer
         color: cardBackgroundColor
@@ -218,7 +180,7 @@ import QtQuick.Layouts 1.3
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                musicIsPlaying = !musicIsPlaying;
+                                MusicCtrl.togglePlayPause();
                                 mouse.accepted = true;
                             }
                             onPressed: parent.scale = 0.9
@@ -253,7 +215,7 @@ import QtQuick.Layouts 1.3
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                playSong((currentSongIndex + 1) % playlistModel.count);
+                                MusicCtrl.playNext();
                                 mouse.accepted = true;
                             }
                             onPressed: parent.opacity = 0.5
@@ -453,7 +415,8 @@ import QtQuick.Layouts 1.3
                             value: musicProgress * 100
 
                             onMoved: {
-                                musicElapsedSec = (value / 100) * musicDurationSec;
+                                var seekSec = (value / 100) * musicDurationSec;
+                                MusicCtrl.seekTo(Math.floor(seekSec));
                             }
 
                             background: Rectangle {
@@ -573,8 +536,7 @@ import QtQuick.Layouts 1.3
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    var prevIndex = currentSongIndex - 1 < 0 ? playlistModel.count - 1 : currentSongIndex - 1;
-                                    playSong(prevIndex);
+                                    MusicCtrl.playPrevious();
                                     mouse.accepted = true;
                                 }
                                 onPressed: parent.scale = 0.85
@@ -611,7 +573,7 @@ import QtQuick.Layouts 1.3
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    musicIsPlaying = !musicIsPlaying;
+                                    MusicCtrl.togglePlayPause();
                                     mouse.accepted = true;
                                 }
                                 onPressed: parent.scale = 0.90
@@ -642,7 +604,7 @@ import QtQuick.Layouts 1.3
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    playSong((currentSongIndex + 1) % playlistModel.count);
+                                    MusicCtrl.playNext();
                                     mouse.accepted = true;
                                 }
                                 onPressed: parent.scale = 0.85
@@ -676,21 +638,21 @@ import QtQuick.Layouts 1.3
 
                     Image {
                         id: listHeaderImg
-                        source: "qrc:/icons/music_icons/playList.png"
-                        width: 40
-                        height: 40
+                        source: "qrc:/icons/music_icons/listen.png"
+                        width: 32
+                        height: 32
                         fillMode: Image.PreserveAspectFit
                         visible: false
                     }
                     ColorOverlay {
                         anchors.fill: listHeaderImg
                         source: listHeaderImg
-                        //color: "#FFFFFF"
+                        color: "#FFFFFF"
                         opacity: 0.8
                     }
 
                     Text {
-                        text: "播放列表"
+                        text: "当前歌词"
                         font.pixelSize: 24
                         font.weight: Font.Bold
                         color: "white"
@@ -698,148 +660,40 @@ import QtQuick.Layouts 1.3
                     }
                 }
 
-                // 包含歌曲信息的 ListModel，增加了时长字段
-                ListModel {
-                    id: playlistModel
-                    ListElement {
-                        songName: "Starboy"
-                        artistName: "The Weeknd"
-                        coverImg: "qrc:/icons/list1.jpg"
-                        durationSec: 230
-                    }
-                    ListElement {
-                        songName: "Save Your Tears"
-                        artistName: "The Weeknd"
-                        coverImg: "qrc:/icons/list2.jpg"
-                        durationSec: 215
-                    }
-                    ListElement {
-                        songName: "Die For You"
-                        artistName: "The Weeknd"
-                        coverImg: "qrc:/icons/list3.jpg"
-                        durationSec: 260
-                    }
-                    ListElement {
-                        songName: "Out of Time"
-                        artistName: "The Weeknd"
-                        coverImg: "qrc:/icons/list4.jpg"
-                        durationSec: 214
-                    }
-                    ListElement {
-                        songName: "Less Than Zero"
-                        artistName: "The Weeknd"
-                        coverImg: "qrc:/icons/list5.jpg"
-                        durationSec: 211
-                    }
-                }
-
-                ListView {
+                // 歌词大字显示区
+                Item {
                     anchors.top: listHeader.bottom
                     anchors.topMargin: 24
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
-                    clip: true
-                    spacing: 8
-                    model: playlistModel
-                    delegate: Rectangle {
-                        width: parent.width
-                        height: 60
-                        radius: 10
-
-                        // 当前播放的歌曲底色微亮
-                        property bool isCurrent: index === currentSongIndex
-                        color: isCurrent ? "#3A3A3C" : (itemMouseArea.pressed ? "#505052" : "transparent")
-                        Behavior on color {
-                            ColorAnimation {
-                                duration: 150
-                            }
+                    
+                    Text {
+                        id: displayLyric
+                        anchors.centerIn: parent
+                        width: parent.width * 0.9
+                        text: musicLyric !== "" ? musicLyric : "正在连接音频服务..."
+                        font.pixelSize: 32
+                        font.weight: Font.Bold
+                        color: themeColor // 使用上面的粉红色
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        wrapMode: Text.WordWrap
+                        opacity: text !== "" ? 1 : 0.6
+                        
+                        Behavior on text {
+                            // 为了避免快速跳变闪烁，暂不加复杂动画，或者只用淡入淡出（QML property绑定时需要手动写状态机）
                         }
-
-                        RowLayout {
-                            anchors.fill: parent
-                            anchors.leftMargin: 12
-                            anchors.rightMargin: 12
-                            spacing: 16
-
-                            // 左侧封面 or 动画占位
-                            Rectangle {
-                                Layout.preferredWidth: 44
-                                Layout.preferredHeight: 44
-                                radius: 6
-                                color: "#2C2C2E"
-                                clip: true
-
-                                // 封面图
-                                Image {
-                                    source: coverImg
-                                    anchors.fill: parent
-                                    fillMode: Image.PreserveAspectCrop
-                                    visible: status === Image.Ready
-                                    opacity: isCurrent ? 0.4 : 1.0 // 播放时封面变暗，凸显上面的图标
-                                }
-
-                                // 正在播放的特效 (简单文字模拟声波，可用 Lottie 替代)
-                                Image {
-                                    source: "qrc:/icons/music_icons/listen.png"
-                                    width: 16
-                                    height: 16
-                                    fillMode: Image.PreserveAspectFit
-                                    visible: isCurrent && musicIsPlaying
-                                    anchors.centerIn: parent
-                                }
-                                Image {
-                                    source: "qrc:/icons/music_icons/btn_pausing.png"
-                                    width: 16
-                                    height: 16
-                                    fillMode: Image.PreserveAspectFit
-                                    anchors.centerIn: parent
-                                    visible: isCurrent && !musicIsPlaying
-                                }
-                            }
-
-                            // 居中严格对齐的文字信息
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                spacing: 2
-                                Text {
-                                    text: songName
-                                    color: isCurrent ? themeColor : "#FFFFFF" // 播放中显示主题色(粉色)
-                                    font.pixelSize: 16
-                                    font.weight: isCurrent ? Font.Bold : Font.Medium
-                                    elide: Text.ElideRight
-                                    Layout.fillWidth: true
-                                }
-                                Text {
-                                    text: artistName
-                                    color: "#8E8E93"
-                                    font.pixelSize: 14
-                                    elide: Text.ElideRight
-                                    Layout.fillWidth: true
-                                }
-                            }
-
-                            // 右侧时间/拖动占位
-                            Text {
-                                text: formatTime(durationSec)
-                                color: "#8E8E93"
-                                font.pixelSize: 14
-                                Layout.alignment: Qt.AlignVCenter
-                            }
-                        }
-
-                        MouseArea {
-                            id: itemMouseArea
-                            anchors.fill: parent
-                            onClicked: {
-                                if (currentSongIndex === index) {
-                                    musicIsPlaying = !musicIsPlaying; // 点击正在播放的歌曲则暂停/继续
-                                } else {
-                                    playSong(index); // 点击其他歌曲直接切换
-                                }
-                                mouse.accepted = true;
-                            }
-                        }
+                    }
+                    
+                    // 副标题装饰
+                    Text {
+                        anchors.top: displayLyric.bottom
+                        anchors.topMargin: 20
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: musicLyric !== "" ? "车机蓝牙同步歌词模式" : "暂无歌词数据"
+                        font.pixelSize: 18
+                        color: "#8E8E93"
                     }
                 }
             }
